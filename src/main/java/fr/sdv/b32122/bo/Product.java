@@ -1,6 +1,7 @@
 package fr.sdv.b32122.bo;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -14,6 +15,10 @@ public class Product {
     private Double price;
     @ManyToMany(mappedBy = "products")
     private Set<PetStore> petStores;
+
+    {
+        this.petStores = new HashSet<>();
+    }
 
     public Product() {}
 
@@ -70,5 +75,10 @@ public class Product {
 
     public void setPetStores(Set<PetStore> petStores) {
         this.petStores = petStores;
+    }
+
+    public void addPetStore(PetStore petstore) {
+        this.petStores.add(petstore);
+        petstore.getProducts().remove(this);
     }
 }

@@ -1,6 +1,7 @@
 package fr.sdv.b32122.bo;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -16,7 +17,13 @@ public class PetStore {
     @OneToMany(mappedBy = "petStore")
     private Set<Animal> animals;
     @ManyToMany
+    @JoinTable(name = "PETS_PROD", joinColumns = @JoinColumn(name = "ID_PETS", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "ID_PROD", referencedColumnName = "id") )
     private Set<Product> products;
+
+    {
+        this.products = new HashSet<>();
+    }
 
     public PetStore() {}
 
@@ -71,5 +78,10 @@ public class PetStore {
 
     public void setProducts(Set<Product> products) {
         this.products = products;
+    }
+
+    public void addProducts(Product product) {
+        this.products.add(product);
+        product.getPetStores().remove(this);
     }
 }

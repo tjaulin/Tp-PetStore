@@ -3,6 +3,7 @@ package fr.sdv.b32122.bo;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import java.util.Date;
 
 @Entity
 public class Fish extends Animal {
@@ -12,7 +13,12 @@ public class Fish extends Animal {
     public Fish() {
     }
 
-    public Fish( FishLivEnv livingEnv ) {
+    public Fish(FishLivEnv livingEnv) {
+        this.livingEnv = livingEnv;
+    }
+
+    public Fish(Date birth, String couleur, FishLivEnv livingEnv) {
+        super(birth, couleur);
         this.livingEnv = livingEnv;
     }
 
