@@ -87,6 +87,15 @@ public class App
         em.persist(chat2);
         em.persist(chat3);
 
+        //NE FONCTIONNE PAS
+        /*
+        System.out.println("###DEBUT###");
+        PetStore p = em.find(PetStore.class, 1l);
+        for (Animal animals : p.getAnimals()) {
+            System.out.println(animals);
+        }
+        System.out.println("###FIN###");*/
+
         em.getTransaction().commit();
 
         em.close();

@@ -2,6 +2,7 @@ package fr.sdv.b32122.bo;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -52,5 +53,4 @@ public abstract class Animal {
     public void setPetStore(PetStore petStore) {
         this.petStore = petStore;
     }
-
 }

@@ -23,6 +23,7 @@ public class PetStore {
 
     {
         this.products = new HashSet<>();
+        this.animals = new HashSet<>();
     }
 
     public PetStore() {}
